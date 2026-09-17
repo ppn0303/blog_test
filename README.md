@@ -27,3 +27,5 @@ python3 -m http.server 8000
 ## 배포
 
 `.github/workflows/pages.yml`이 `main` 브랜치의 정적 파일을 GitHub Pages에 배포합니다.
+
+- 공개 주소: https://ppn0303.github.io/blog_test/
