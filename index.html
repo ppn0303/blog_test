@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#181b22" />
+    <meta
+      name="description"
+      content="25개 문항으로 살펴보는 커뮤니티 이용 습관과 현실생활 침투도 테스트"
+    />
+    <meta property="og:title" content="커뮤 체질 검사" />
+    <meta
+      property="og:description"
+      content="내가 커뮤를 하는가, 커뮤가 나를 하는가? 25문항으로 확인해 보세요."
+    />
+    <meta property="og:type" content="website" />
+    <title>커뮤 체질 검사</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="questions.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="커뮤 체질 검사 처음으로">
+        <span class="brand-mark" aria-hidden="true">ㅋ</span>
+        <span>커뮤 체질 검사</span>
+      </a>
+      <span class="privacy-chip"><span aria-hidden="true">●</span> 응답 전송 없음</span>
+    </header>
+
+    <main id="main">
+      <section id="intro-screen" class="screen intro-screen" aria-labelledby="intro-title">
+        <div class="hero-copy">
+          <p class="eyebrow">COMMUNITY HABIT CHECK · 2026</p>
+          <h1 id="intro-title">내가 커뮤를 하는가,<br /><em>커뮤가 나를 하는가?</em></h1>
+          <p class="hero-description">
+            커뮤니티를 얼마나 아는지보다, 온라인의 반응·알고리즘·집단 프레임이
+            판단과 일상에 얼마나 들어오는지를 살펴봅니다.
+          </p>
+
+          <div class="hero-actions">
+            <button id="start-button" class="button button-primary" type="button">
+              검사 시작
+              <span aria-hidden="true">→</span>
+            </button>
+            <span class="duration">25문항 · 약 3분</span>
+          </div>
+        </div>
+
+        <aside class="intro-card" aria-label="검사 안내">
+          <div class="sticker">가볍게, 그러나 솔직하게</div>
+          <h2>여기서 ‘커뮤니티’란?</h2>
+          <p>
+            디시·에펨코리아·더쿠 같은 게시판뿐 아니라, <strong>유튜브·인스타그램의
+            추천 피드와 댓글</strong>처럼 여론과 반응을 소비하는 공간도 포함합니다.
+          </p>
+          <div class="mini-rule"></div>
+          <p class="small-copy">
+            단, 심심해서 예능·음악·취미 영상을 넘겨보는 행동 자체는 1번 문항의
+            ‘화제 확인’에 포함하지 않습니다.
+          </p>
+        </aside>
+
+        <div class="feature-row" aria-label="검사 특징">
+          <div><b>01</b><span>총점보다 영역별 차이를 봅니다</span></div>
+          <div><b>02</b><span>정답이나 도덕 점수는 없습니다</span></div>
+          <div><b>03</b><span>모든 계산은 이 브라우저에서 끝납니다</span></div>
+        </div>
+      </section>
+
+      <section id="quiz-screen" class="screen quiz-screen" hidden aria-labelledby="question-text">
+        <div class="quiz-topline">
+          <button id="quit-button" class="text-button" type="button">← 처음으로</button>
+          <span id="progress-text" class="progress-text">1 / 25</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+
+        <article class="question-card">
+          <div class="question-meta">
+            <span id="category-letter" class="category-letter">A</span>
+            <div>
+              <p id="category-name" class="category-name">커뮤 문해력과 이용 습관</p>
+              <p id="question-number" class="question-number">QUESTION 01</p>
+            </div>
+          </div>
+
+          <h2 id="question-text"></h2>
+          <p id="question-note" class="question-note" hidden></p>
+
+          <div id="answer-options" class="answer-options" role="group" aria-label="응답 선택">
+            <button class="answer-button" type="button" data-score="0">
+              <span class="score-dot">0</span><span>전혀 아니다</span>
+            </button>
+            <button class="answer-button" type="button" data-score="1">
+              <span class="score-dot">1</span><span>가끔 그렇다</span>
+            </button>
+            <button class="answer-button" type="button" data-score="2">
+              <span class="score-dot">2</span><span>자주 그렇다</span>
+            </button>
+            <button class="answer-button" type="button" data-score="3">
+              <span class="score-dot">3</span><span>거의 항상 그렇다</span>
+            </button>
+          </div>
+
+          <div class="question-nav">
+            <button id="previous-button" class="button button-ghost" type="button">이전 문항</button>
+            <span class="autosave-note">선택하면 다음 문항으로 이동합니다</span>
+          </div>
+        </article>
+      </section>
+
+      <section id="result-screen" class="screen result-screen" hidden aria-labelledby="result-title">
+        <div class="result-hero">
+          <p class="eyebrow">YOUR COMMUNITY PROFILE</p>
+          <p id="result-kicker" class="result-kicker">당신의 유형은</p>
+          <h1 id="result-title"></h1>
+          <p id="result-summary" class="result-summary"></p>
+          <div id="risk-badges" class="risk-badges" aria-label="높게 나타난 영역"></div>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card score-overview">
+            <div class="card-heading">
+              <div>
+                <p class="card-label">참고용 총점</p>
+                <h2><span id="total-score">0</span><small> / 75</small></h2>
+              </div>
+              <span id="overall-percent" class="percent-pill">0%</span>
+            </div>
+            <p class="card-note">
+              총점은 요약값일 뿐입니다. 낮은 영역이 높은 영역을 가릴 수 있어 아래
+              프로필을 함께 봐야 합니다.
+            </p>
+            <div class="axis-summary">
+              <div>
+                <span>커뮤 친숙도</span>
+                <b id="familiarity-label"></b>
+                <small id="familiarity-score"></small>
+              </div>
+              <div>
+                <span>판단·생활 침투도</span>
+                <b id="influence-label"></b>
+                <small id="influence-score"></small>
+              </div>
+            </div>
+          </article>
+
+          <article class="result-card radar-card">
+            <div class="card-heading compact">
+              <div>
+                <p class="card-label">영역별 프로필</p>
+                <h2>어디가 높고 낮은가</h2>
+              </div>
+            </div>
+            <div id="radar-chart" class="radar-chart" role="img" aria-label="5개 영역 방사형 차트"></div>
+          </article>
+        </div>
+
+        <article class="result-card domain-card">
+          <div class="card-heading compact">
+            <div>
+              <p class="card-label">5개 영역 상세</p>
+              <h2 id="dominant-heading">가장 눈에 띄는 패턴</h2>
+            </div>
+          </div>
+          <p id="dominant-description" class="dominant-description"></p>
+          <div id="domain-bars" class="domain-bars"></div>
+        </article>
+
+        <div class="result-actions">
+          <button id="share-button" class="button button-primary" type="button">결과 공유하기</button>
+          <button id="restart-button" class="button button-ghost" type="button">다시 검사하기</button>
+        </div>
+        <p id="share-status" class="share-status" role="status" aria-live="polite"></p>
+
+        <details class="answers-review">
+          <summary>내 응답 다시 보기</summary>
+          <ol id="answers-list"></ol>
+        </details>
+      </section>
+
+      <section class="method-section" aria-labelledby="method-title">
+        <div>
+          <p class="eyebrow">ABOUT THIS TEST</p>
+          <h2 id="method-title">이 검사는 진단 도구가 아닙니다</h2>
+        </div>
+        <div class="method-copy">
+          <p>
+            한국 온라인 공간의 이용 행태를 바탕으로 만든 비표준화 자기보고형 테스트입니다.
+            결과 구간과 유형명은 이해를 돕기 위한 편집적 분류이며, 성격·중독·정치 성향을
+            의학적 또는 심리측정학적으로 판정하지 않습니다.
+          </p>
+          <details>
+            <summary>채점 원리와 참고 자료</summary>
+            <div class="details-body">
+              <p>
+                A는 커뮤니티 친숙도, B–E는 각각 알고리즘·댓글 의존, 정보 검증,
+                집단·갈등 프레임, 현실생활 침투를 봅니다. 각 영역은 15점 만점이며,
+                특정 영역이 9점 이상이면 총점과 별도로 표시합니다.
+              </p>
+              <ul>
+                <li><a href="https://www.data.go.kr/data/15145186/fileData.do" target="_blank" rel="noreferrer">한국언론진흥재단 소셜미디어 이용자 조사 원자료</a></li>
+                <li><a href="https://www.yna.co.kr/view/AKR20260105059500005" target="_blank" rel="noreferrer">2025 언론수용자 조사 보도</a></li>
+                <li><a href="https://hrcopinion.co.kr/archives/32142" target="_blank" rel="noreferrer">한국리서치 웹조사: 뉴스 댓글 인식</a></li>
+                <li><a href="https://kcc.go.kr/download.do?fileSeq=58986" target="_blank" rel="noreferrer">방송통신위원회 지능정보사회 이용자 패널조사</a></li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>커뮤 체질 검사</span>
+      <span>응답은 저장하거나 서버로 전송하지 않습니다.</span>
+    </footer>
+  </body>
+</html>
